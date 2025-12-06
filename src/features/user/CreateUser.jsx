@@ -26,7 +26,7 @@ function CreateUser() {
         value={userName}
         onChange={(e) => setUserName(e.target.value)}
       ></input>
-      <button>Start Ordering</button>
+      {userName && <button>Start Ordering</button>}
     </form>
   );
 }
