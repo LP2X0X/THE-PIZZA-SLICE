@@ -1,6 +1,7 @@
-import { Link } from "react-router";
-import UserName from "../features/user/UserName";
-import { useSelector } from "react-redux";
+import { Link } from 'react-router';
+import UserName from '../features/user/UserName';
+import { useSelector } from 'react-redux';
+import SearchOrder from '../features/order/SearchOrder';
 
 function Header() {
   const userName = useSelector((state) => state.user.userName);
@@ -8,7 +9,7 @@ function Header() {
     <header>
       <Link to="/">The Pizza Slice Co.</Link>
 
-      <input placeholder="Search order #"></input>
+      <SearchOrder />
 
       {userName && <UserName userName={userName} />}
     </header>

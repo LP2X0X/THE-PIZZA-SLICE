@@ -1,8 +1,8 @@
-import { Link, useNavigate } from "react-router";
+import { Link, useNavigate } from 'react-router';
 
-function LinkButton() {
+function LinkButton({ to, children }) {
   const navigate = useNavigate();
-  return <Link to={() => navigate(-1)}></Link>;
+  return <Link to={to}>{children}</Link>;
 }
 
 export default LinkButton;

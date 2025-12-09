@@ -8,8 +8,8 @@ function CartItem({ item }) {
     <li>
       <h4>{`${item.quantity} x ${item.name}`}</h4>
       <p>{item.totalPrice}</p>
-      <UpdateItemQuantity id={item.id} quantity={item.quantity} />
-      <button onClick={() => dispatch(deleteItem(item.id))}>Delete</button>
+      <UpdateItemQuantity id={item.pizzaId} quantity={item.quantity} />
+      <button onClick={() => dispatch(deleteItem(item.pizzaId))}>Delete</button>
     </li>
   );
 }

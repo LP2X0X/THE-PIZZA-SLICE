@@ -1,18 +1,23 @@
-import { useState } from "react";
-import { useDispatch } from "react-redux";
-import { createUser } from "./userSlice";
-import { useNavigate } from "react-router";
+import { useEffect, useRef, useState } from 'react';
+import { useDispatch } from 'react-redux';
+import { createUser } from './userSlice';
+import { useNavigate } from 'react-router';
 
 function CreateUser() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  const [userName, setUserName] = useState("");
+  const [userName, setUserName] = useState('');
+  const inputRef = useRef();
+
+  useEffect(function () {
+    inputRef.current.focus();
+  }, []);
 
   function handleSubmit(e) {
     e.preventDefault();
     dispatch(createUser(userName));
-    navigate("/menu");
+    navigate('/menu');
   }
 
   return (
@@ -25,6 +30,7 @@ function CreateUser() {
         placeholder="Your full name"
         value={userName}
         onChange={(e) => setUserName(e.target.value)}
+        ref={inputRef}
       ></input>
       {userName && <button>Start Ordering</button>}
     </form>

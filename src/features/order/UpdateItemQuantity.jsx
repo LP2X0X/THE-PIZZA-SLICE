@@ -3,6 +3,7 @@ import { decreaseItemQuantity, increateItemQuantity } from "../cart/cartSlice";
 
 function UpdateItemQuantity({ id, quantity }) {
   const dispatch = useDispatch();
+
   return (
     <div>
       <button onClick={() => dispatch(increateItemQuantity(id))}>+</button>
