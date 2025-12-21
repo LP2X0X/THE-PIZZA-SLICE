@@ -1,5 +1,5 @@
 .createOrderForm {
-  max-width: calc(48 * 16px);
+  max-width: calc(48 * 1rem);
   padding: 1.5rem 0.5rem;
   color: var(--color-gray-700);
   margin: 0 auto;
@@ -23,7 +23,17 @@
   gap: 0.5rem;
 }
 
+/* If we don't set the flex-basis here, it default value will be content. This in turn
+cause the width of the label flex item different from each row.
+Since flexbox use the initial width of the flex item as a starting point (base) THEN
+recalculate all to fit the rules, this can cause the flex items on different rows have different width. */
+
+.formLabel {
+  flex-basis: 20%;
+}
+
 .formInput {
+  flex-basis: 80%;
   font-size: var(--font-size-sm);
   border: 1px solid var(--color-gray-200);
   color: var(--color-gray-700);
@@ -39,7 +49,14 @@
 }
 
 .addressSection {
+  display: flex;
+  align-items: center;
   position: relative;
+  flex-basis: 80%;
+}
+
+.addressInput {
+  flex-basis: 100%;
 }
 
 .createOrderCheckbox {
@@ -50,8 +67,8 @@
 }
 
 input[type='checkbox'] {
-  width: 1.5em;
-  height: 1.5em;
+  width: 1.5rem;
+  height: 1.5rem;
   accent-color: var(--color-primary-400);
 }
 
@@ -139,12 +156,7 @@ Retrieved 2025-12-21, License - CC BY-SA 4.0
   .createOrderSection {
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
     align-items: center;
-  }
-
-  .formInput {
-    width: 80%;
   }
 
   .warning {

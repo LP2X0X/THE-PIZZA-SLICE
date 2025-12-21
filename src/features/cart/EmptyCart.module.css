@@ -1,5 +1,5 @@
 .emptyCart {
-  max-width: calc(48 * 16px);
+  max-width: calc(48 * 1rem);
   padding: 1rem 0.5rem;
   margin: auto;
   display: flex;

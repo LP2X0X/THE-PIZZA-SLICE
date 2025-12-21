@@ -43,24 +43,24 @@ function CreateOrder() {
       </h2>
       <div className={styles.createOrderInputSectionContainer}>
         <section className={styles.createOrderSection}>
-          <label>First name</label>
+          <label className={styles.formLabel}>First name</label>
           <input
             type="text"
             name="customer"
             defaultValue={firstName}
             className={styles.formInput}
             required
-            autocomplete="off"
+            autoComplete="off"
           ></input>
         </section>
 
         <section className={styles.createOrderSection}>
-          <label>Phone number</label>
+          <label className={styles.formLabel}>Phone number</label>
           <input
             type="tel"
             name="phone"
             className={styles.formInput}
-            autocomplete="off"
+            autoComplete="off"
             required
           ></input>
         </section>
@@ -70,25 +70,25 @@ function CreateOrder() {
           </p>
         )}
 
-        <section
-          className={`${styles.createOrderSection} ${styles.addressSection}`}
-        >
-          <label>Address</label>
-          <input
-            type="text"
-            name="address"
-            defaultValue={address}
-            className={styles.formInput}
-            autocomplete="off"
-            required
-          ></input>
-          {addressStatus !== 'fulfilled' && addressStatus !== 'error' && (
-            <Button type="address" onClick={handleGetPosition}>
-              {addressStatus === 'loading'
-                ? 'Getting position...'
-                : 'Get position'}
-            </Button>
-          )}
+        <section className={styles.createOrderSection}>
+          <label className={styles.formLabel}>Address</label>
+          <div className={styles.addressSection}>
+            <input
+              type="text"
+              name="address"
+              defaultValue={address}
+              className={`${styles.formInput} ${styles.addressInput}`}
+              autoComplete="off"
+              required
+            ></input>
+            {addressStatus !== 'fulfilled' && addressStatus !== 'error' && (
+              <Button type="address" onClick={handleGetPosition}>
+                {addressStatus === 'loading'
+                  ? 'Getting position...'
+                  : 'Get position'}
+              </Button>
+            )}
+          </div>
         </section>
 
         {addressStatus === 'error' && (

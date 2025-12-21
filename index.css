@@ -1,11 +1,11 @@
 :root {
   /* Base Size */
-  --font-size-base: 1rem; /* 16px */
+  --font-size-base: 1rem; /* 1rem */
 
   /* Minor Third Type Scale (1.2) */
   --font-size-xxs: calc(var(--font-size-base) / 1.2 / 1.2); /* ~11.1px */
   --font-size-xs: calc(var(--font-size-base) / 1.2); /* ~13.3px */
-  --font-size-sm: var(--font-size-base); /* 16px */
+  --font-size-sm: var(--font-size-base); /* 1rem */
   --font-size-md: calc(var(--font-size-base) * 1.2); /* 19.2px */
   --font-size-lg: calc(var(--font-size-base) * 1.44); /* 23.0px */
   --font-size-xl: calc(var(--font-size-base) * 1.728); /* 27.6px */
