@@ -2,16 +2,20 @@
 
 **The Pizza Slice Co.** is an interactive pizza ordering web application built using modern React tools and practices. It delivers a clean, responsive, and user-friendly interface for browsing a pizza menu, managing a cart, and placing an order—all without authentication.
 
+## 📸 Screenshots
+
+<img width="2288" height="1375" alt="image" src="https://github.com/user-attachments/assets/e3b81767-292b-4a9a-9f5e-0714eb74487f" />
 
 ## 🧠 Overview
 
 This project simulates an **online pizza ordering experience** with real-world features such as:
 
-* Dynamic pizza menu fetched from an API simulated using json-server package
+* Dynamic pizza menu fetched from a simulated API
 * Cart functionality with add/remove behaviors
 * Order creation with user delivery details
 * Ability to mark an order as **priority**
 * Order confirmation with a unique ID
+* Order fetched from a REST API
 * Fully responsive, visually appealing UI
 
 Users do **not need to log in or create an account**; it’s designed to be simple and accessible.
@@ -44,8 +48,8 @@ Users do **not need to log in or create an account**; it’s designed to be simp
 
 ### 📱 Responsive Design
 
-* Works on both desktop and mobile screens
-* Clean layout powered by utility styles
+* Works on variety of screen size
+* Design with accessibility and responsiveness in mind
 
 
 ## 🛠 Technology Stack
@@ -55,9 +59,9 @@ Users do **not need to log in or create an account**; it’s designed to be simp
 | UI               | React                           |
 | Routing          | React Router                    |
 | State Management | Redux Toolkit                   |
-| Styling          | Vanilla CSS                     |
+| Styling          | Vanilla CSS with CSS Modules    |
 | Build Tool       | Vite                            |
-| API Integration  | json-server                     |
+| API Integration  | JSON server                     |
 
 
 ## 🧩 Key Concepts Used
@@ -65,10 +69,10 @@ Users do **not need to log in or create an account**; it’s designed to be simp
 * **React Components** – Reusable UI building blocks
 * **Redux Toolkit** – Centralized state for cart & user info
 * **React Router** – Page navigation with routes & loaders
-* **Tailwind CSS** – Utility-first styling
+* **CSS Module** – Local scoping
 * **API Interaction** – Fetching menu items and submitting orders
 * **Geolocation Integration** – Optional address auto-fill
-* **Responsive Web Design** – Works across devices smoothly
+* **Accessibility Web Design** – Website should be usable by everyone
 
 
 ## 📁 Typical Project Structure
@@ -84,26 +88,30 @@ src/
 ├── services/            # API service functions
 ├── utils/               # Utility functions
 └── App.jsx              # Main entry component
-``` :contentReference[oaicite:4]{index=4}
-
+````
 
 ## 🚀 Getting Started (Development)
 
 To run this project locally:
 
 1. Clone the repository
+
 2. Install dependencies:
-   ```bash
+```bash
    npm install
-````
+```
 
 3. Start the development server:
-
-   ```bash
+```bash
    npm run dev
-   ```
-4. Open in browser at `http://localhost:5173` (or shown port) ([GitHub][1])
+```
 
+4. Start the simulated API using JSON Server
+```bash
+   npm run server
+```
+
+5. Open in browser at `http://localhost:5173` (or shown port)
 
 ## 📡 API Integration
 
@@ -116,12 +124,22 @@ The app communicates with a backend API for menu and orders:
   * `/order` – Create a new order
   * `/order/:id` – Fetch or update a specific order ([Awesome Ecosystem][3])
 
-
 ## 🎯 Purpose & Learning Value
 
 This project is built as a **practical React learning exercise**, showcasing how to:
+* Manage global application state using Redux Toolkit
+* Build a connected UI with React Router and external APIs
+* Handle asynchronous workflows using React Router actions and Redux Toolkit createAsyncThunk
+* Apply strong frontend fundamentals, including:
+   * Semantic HTML
+   * Accessible and responsive CSS layouts
+ 
+## 🙋‍♂️ Author
 
-* Manage global state using Redux Toolkit
-* Build connected UI with router & API
-* Handle asynchronous actions
-* Build responsive layouts with Tailwind CSS
+Long Pham
+
+Feel free to reach out or fork the project for your own practice.
+
+## 📜 License
+
+This project is open source and available under the MIT License.
