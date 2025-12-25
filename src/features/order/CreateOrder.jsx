@@ -6,13 +6,8 @@ import store from '../../Store';
 import EmptyCart from '../cart/EmptyCart';
 import styles from './CreateOrder.module.css';
 import Button from '../../ui/Button';
-
-const API_URL = 'https://react-fast-pizza-api.jonas.io/api';
-
-const isValidPhoneNumber = (str) =>
-  /^\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}$/.test(
-    str
-  );
+import { isValidPhoneNumber } from '../../utils/helpers';
+import { createOrder } from '../../services/apiRestaurant';
 
 function CreateOrder() {
   const cart = useSelector(getCart);
@@ -128,44 +123,28 @@ function CreateOrder() {
 export default CreateOrder;
 
 export async function action({ request }) {
-  try {
-    const formData = await request.formData();
-    const data = Object.fromEntries(formData);
+  const formData = await request.formData();
+  const data = Object.fromEntries(formData);
 
-    const errors = {};
+  const errors = {};
 
-    if (!isValidPhoneNumber(data.phone)) {
-      errors.phone =
-        'Please give us your correct phone number. We might need it to connect you.';
-      return errors;
-    }
-
-    const order = {
-      ...data,
-      priority: data.priority === 'on',
-      cart: JSON.parse(data.cart),
-    };
-
-    const res = await fetch(`${API_URL}/order`, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(order),
-    });
-
-    if (!res.ok) {
-      throw new Error('Sending order failed...');
-    }
-
-    // I need to clear the cart here
-    // But I can not use useDispatch hook since I'm not in a component
-    store.dispatch(clearCart());
-
-    const newOrder = await res.json();
-
-    return redirect(`/order/${newOrder.data.id}`);
-  } catch (err) {
-    console.log(err);
+  if (!isValidPhoneNumber(data.phone)) {
+    errors.phone =
+      'Please give us your correct phone number. We might need it to connect you.';
+    return errors;
   }
+
+  const order = {
+    ...data,
+    priority: data.priority === 'on',
+    cart: JSON.parse(data.cart),
+  };
+
+  const newOrder = await createOrder(order);
+
+  // I need to clear the cart here
+  // But I can not use useDispatch hook since I'm not in a component
+  store.dispatch(clearCart());
+
+  return redirect(`/order/${newOrder.data.id}`);
 }

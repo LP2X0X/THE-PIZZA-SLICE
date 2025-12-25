@@ -1,15 +1,6 @@
 import { useEffect, useState } from 'react';
 import styles from './CountDownTimer.module.css';
-
-function formatDateAndTime(dateAndTime) {
-  const data = new Date(dateAndTime);
-  return data.toLocaleString('en-US', {
-    month: 'short',
-    day: 'numeric',
-    hour: '2-digit',
-    minute: '2-digit',
-  });
-}
+import { formatDateAndTime } from '../../utils/helpers';
 
 function CountDownTimer({ estimatedDelivery, setHasOrderArrived }) {
   const estimatedDate = formatDateAndTime(estimatedDelivery);

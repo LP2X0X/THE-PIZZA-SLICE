@@ -1,4 +1,3 @@
-import { useNavigate } from 'react-router';
 import LinkButton from '../../ui/LinkButton';
 import styles from './EmptyCart.module.css';
 

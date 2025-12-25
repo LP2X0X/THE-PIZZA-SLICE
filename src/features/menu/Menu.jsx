@@ -1,6 +1,7 @@
 import { useLoaderData } from 'react-router';
 import MenuItem from './MenuItem';
 import styles from './Menu.module.css';
+import { getMenu } from '../../services/apiRestaurant';
 
 function Menu() {
   const menu = useLoaderData();
@@ -17,16 +18,6 @@ function Menu() {
 export default Menu;
 
 export async function loader() {
-  try {
-    const res = await fetch('http://localhost:9000/menu');
-
-    if (!res.ok) throw new Error('Failed to fetch pizzas data...');
-
-    const menu = await res.json();
-
-    return menu;
-  } catch (err) {
-    console.log(err);
-    throw new Error(err.message);
-  }
+  const menu = await getMenu();
+  return menu;
 }

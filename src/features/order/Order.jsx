@@ -4,6 +4,7 @@ import OrderItem from './OrderItem';
 import { useEffect, useState } from 'react';
 import UpdateOrderPriority from './UpdateOrderPriority';
 import styles from './Order.module.css';
+import { getOrder } from '../../services/apiRestaurant';
 
 const API_URL = 'https://react-fast-pizza-api.jonas.io/api/order';
 
@@ -91,12 +92,6 @@ function Order() {
 export default Order;
 
 export async function loader({ params }) {
-  const res = await fetch(`${API_URL}/${params.id}`);
-
-  if (!res.ok) {
-    throw new Error(`Couldn't find order #${params.id}`);
-  }
-
-  const data = await res.json();
-  return data;
+  const order = await getOrder(params.id);
+  return order;
 }

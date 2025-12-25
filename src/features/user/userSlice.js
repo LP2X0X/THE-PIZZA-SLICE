@@ -1,4 +1,5 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
+import { getAddress } from '../../services/apiGeocoding';
 
 const initialUserState = {
   userName: '',
@@ -19,11 +20,7 @@ export const fetchAddress = createAsyncThunk(
       longitude: positionObj.coords.longitude,
     };
 
-    const res = await fetch(
-      `https://api.bigdatacloud.net/data/reverse-geocode-client?latitude=${position.latitude}&longitude=${position.longitude}`
-    );
-
-    const addressObj = await res.json();
+    const addressObj = await getAddress(position);
     const address = `${addressObj?.locality}, ${addressObj?.city} ${addressObj?.postcode}, ${addressObj?.countryName}`;
 
     return { position, address };

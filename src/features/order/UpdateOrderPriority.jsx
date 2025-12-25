@@ -1,8 +1,7 @@
 import { useFetcher } from 'react-router';
 import Button from '../../ui/Button';
 import styles from './UpdateOrderPriority.module.css';
-
-const API_URL = 'https://react-fast-pizza-api.jonas.io/api';
+import { updateOrder } from '../../services/apiRestaurant';
 
 function UpdateOrderPriority() {
   const fetcher = useFetcher();
@@ -20,17 +19,10 @@ function UpdateOrderPriority() {
 export default UpdateOrderPriority;
 
 export async function action({ params }) {
-  const data = { priority: true };
-  const res = await fetch(`${API_URL}/order/${params.id}`, {
-    method: 'PATCH',
-    headers: {
-      'Content-Type': 'application/json',
-    },
-    body: JSON.stringify(data),
-  });
-
-  if (!res.ok)
-    throw new Error('Can not update your order priority right now...');
-
-  return null;
+  try {
+    const data = { priority: true };
+    await updateOrder(data, params.id);
+  } catch (err) {
+    console.log(err);
+  }
 }
