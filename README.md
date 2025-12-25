@@ -115,7 +115,7 @@ To run this project locally:
 
 ## 📡 API Integration
 
-The app communicates with a backend API for menu and orders:
+The app communicates with a backend API for orders:
 
 * **Base URL:** `https://react-fast-pizza-api.jonas.io/api`
 * Endpoints:
